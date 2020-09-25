@@ -1,0 +1,36 @@
+﻿@model U2Actividad4Routing.Models.Cortometraje
+@{
+    Layout = "_Layout";
+}
+<header>
+    <nav class="menuHorizontal">
+        <a href="~/Home/Index">
+            <img id="logo" src="~/images/Disney_pixar.png">
+        </a>
+        <ul>
+
+            <li>
+                <a href="~/Home/Index">Inicio</a>
+            </li>
+            <li>
+                <a href="~/Peliculas">Películas</a>
+            </li>
+
+            <li class="selected">
+                <a href="~/Cortometrajes">Cortometrajes</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <div id="principalVerCorto">
+        <img class="blur" src="~/images/portadas/@(Model.Id)_pc.jpg">
+        <div class="datosCorto">
+            <h1>@Model.Nombre</h1>
+            <p>
+                @Model.Descripcion
+            </p>
+        </div>
+    </div>
+</main>
+

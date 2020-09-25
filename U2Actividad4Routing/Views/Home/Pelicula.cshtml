@@ -1,0 +1,62 @@
+﻿@model U2Actividad4Routing.Models.PeliculaViewModel
+
+@{
+    Layout = "_Layout";
+}
+<header>
+    <nav class="menuHorizontal">
+        <a href="~/Home/Index">
+            <img id="logo" src="~/images/Disney_pixar.png">
+        </a>
+        <ul>
+
+            <li>
+                <a href="~/Home/Index">Inicio</a>
+            </li>
+            <li class="selected">
+                <a href="~/Peliculas">Películas</a>
+            </li>
+
+            <li>
+                <a href="~/Cortometrajes">Cortometrajes</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <div id="principalVer">
+
+        <div class="container">
+            <img class="image1" src="~/images/banners/@(Model.Id)_b.jpg">
+            <div class="overlay">
+                <img class="image2" src="~/images/banners/@(Model.Id)_b.png">
+            </div>
+
+        </div>
+
+        <div class="datosPelicula">
+            <h1>@Model.Nombre</h1>
+            <h2>@Model.NombreOriginal • @Model.FechaEstreno.Value.ToShortDateString()</h2>
+                <p>
+                    @Model.Descripcion
+                </p>
+
+                <div class="personajes">
+                    <h2>Personajes</h2>
+
+                    @foreach (var personaje in Model.Apariciones)
+                     {
+                        <div>
+                            <a>
+                                <img src="~/images/personajes/@(personaje.IdPersonajeNavigation.Id).jpg" alt="@personaje.IdPersonajeNavigation.Nombre">
+                            </a>
+                            <div class="nombrePelicula">
+                                <p>@personaje.IdPersonajeNavigation.Nombre</p>
+                            </div>
+                        </div>
+                     }
+                </div>
+        </div>
+    </div>
+</main>
+

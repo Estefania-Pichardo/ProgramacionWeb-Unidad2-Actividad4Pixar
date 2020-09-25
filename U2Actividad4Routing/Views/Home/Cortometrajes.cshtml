@@ -1,0 +1,48 @@
+﻿@model U2Actividad4Routing.Models.CortometrajesViewModel
+@{
+    Layout = "_Layout";
+}
+<header>
+    <nav class="menuHorizontal">
+        <a href="~/Home/Index">
+            <img id="logo" src="~/images/Disney_pixar.png">
+        </a>
+        <ul>
+
+            <li>
+                <a href="~/Home/Index">Inicio</a>
+            </li>
+            <li >
+                <a href="~/Peliculas">Películas</a>
+            </li>
+
+            <li class="selected">
+                <a href="~/Cortometrajes">Cortometrajes</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <div id="principalPeliculas">
+
+        <div id="pelis">
+            @foreach (var categoria in Model.Categorias)
+            {
+                <h1>@categoria.Nombre</h1>
+                foreach (var cortometraje in categoria.Cortometraje)
+                {
+                    <div>
+                        <a class="imgPelicula" href="~/Cortometrajes/@cortometraje.Nombre.Replace(" ","-")">
+                            <img src="~/images/portadas/@(cortometraje.Id)_pc.jpg" alt="@cortometraje.Nombre">
+                        </a>
+                        <div class="nombrePelicula">
+                            <p>@cortometraje.Nombre</p>
+                        </div>
+                    </div>
+                }
+
+            }
+        </div>
+    </div>
+</main>
+
